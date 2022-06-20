@@ -40,11 +40,12 @@ jobs:
         id: parsed_tag
         run: |
           ref=${{ github.ref }}
+          echo $ref 
           version=$(echo "$ref" |  cut -d '/' -f 4)
           echo "::set-output name=version::$version"
 
       - name: Build docker image using tag
         run: |
-          echo "${{ env.GH_TAG }}"
+          echo ${{ env.GH_TAG }}
         env:
           GH_TAG: ${{ steps.parsed_tag.outputs.version }}
