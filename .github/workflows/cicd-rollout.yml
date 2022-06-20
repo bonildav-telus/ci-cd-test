@@ -35,4 +35,10 @@ jobs:
           release_branches: main
           custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major
           tag_prefix: gha-cdo-gql-wireless-subscription-np-v
-        run: echo "hola"
+
+      - name: Parsed tag
+        id: parsed_tag
+        run: |
+          ref=${{ github.ref }}
+          version=$(echo "$ref" |  cut -d '/' -f 4)
+          echo "::set-output name=version::$version"
