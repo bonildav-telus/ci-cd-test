@@ -34,14 +34,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN  }}
           release_branches: main
           custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major
+          tag_prefix: gha-cdo-gql-wireless-subscription-np-v
           # dry_run: true
-
-    # - name: Bump version and push tag
-    #   uses: anothrNick/github-tag-action@1.36.0
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #     WITH_V: true
-    #     RELEASE_BRANCHES: feat-rollout-np-bonildav
-    #     DRY_RUN: true
-    #     TAG_CONTEXT: main
-        # INITIAL_VERSION:
