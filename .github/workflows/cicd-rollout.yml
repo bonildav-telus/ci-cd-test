@@ -36,47 +36,8 @@ jobs:
           custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major
           tag_prefix: gha-cdo-gql-wireless-subscription-np-v
 
-      - name: Parsed tag
-        id: parsed_tag
-        run: |
-          ref=${{ github.ref }}
-          echo $ref
-          version=$(echo "$ref" |  cut -d '/' -f 4)
-          echo "::set-output name=version::$version"
-
       - name: Build docker image using tag
         run: |
           echo ${{ env.GH_TAG }}
         env:
-          GH_TAG: ${{ steps.parsed_tag.outputs.version }}
-
-
-
-name: test
-on:
-  # Executes when a new release is published
-  # release:
-  #   types: [published]
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-# Pipeline environment variables
-env:
-  # GCP Auth
-  PROJECT_ID: 'cdo-customerassist-np-0f7135'
-
-jobs:
-# ======================================
-# Generate github TAG and docker image using the same tag
-# ======================================
-  generate-tag:
-    name: test
-    runs-on: [ubuntu-latest]
-    permissions:
-      contents: 'write'
-      pull-requests: 'write'
-    steps:
-      - name: "Cloning repo"
-        uses: actions/checkout@v3
+          GH_TAG: ${{ steps.tagging.outputs.new_tag }}
