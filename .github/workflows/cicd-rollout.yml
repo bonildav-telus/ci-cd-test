@@ -35,4 +35,4 @@ jobs:
           release_branches: main
           custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major
           tag_prefix: gha-cdo-gql-wireless-subscription-np-v
-       run: echo "hola"
+        run: echo "hola"
