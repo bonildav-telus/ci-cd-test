@@ -12,6 +12,7 @@ on:
 env:
   # GCP Auth
   PROJECT_ID: 'cdo-customerassist-np-0f7135'
+  DOCKER_IMG: "northamerica-northeast1-docker.pkg.dev/cio-gke-devops-e4993356/applications/dt-cons-customer-assist/wireless-subscription-gql"
 
 jobs:
 # ======================================
@@ -23,6 +24,8 @@ jobs:
     permissions:
       contents: 'write'
       pull-requests: 'write'
+      id-token: 'write'
+      
     steps:
       - name: "Cloning repo"
         uses: actions/checkout@v3
