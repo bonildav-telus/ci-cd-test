@@ -37,7 +37,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN  }}
           release_branches: test
           custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major
-          tag_prefix: gha-cdo-gql-wireless-subscription-np-v
+          tag_prefix: test-v
 
       - name: Build docker image using tag
         run: |
