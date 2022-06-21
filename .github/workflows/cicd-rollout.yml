@@ -5,7 +5,7 @@ on:
   #   types: [published]
   push:
     branches:
-      - main
+      - test
   workflow_dispatch:
 
 # Pipeline environment variables
@@ -25,7 +25,7 @@ jobs:
       contents: 'write'
       pull-requests: 'write'
       id-token: 'write'
-      
+
     steps:
       - name: "Cloning repo"
         uses: actions/checkout@v3
@@ -35,7 +35,7 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN  }}
-          release_branches: main
+          release_branches: test
           custom_release_rules: hotfix:patch,bug:patch,fix:patch,feat:minor,perf:major
           tag_prefix: gha-cdo-gql-wireless-subscription-np-v
 
